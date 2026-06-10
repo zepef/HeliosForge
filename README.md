@@ -1,5 +1,4 @@
 <img width="640" height="360" alt="HeliosForge-Logo" src="https://github.com/user-attachments/assets/480d9db4-5d30-4bf8-8454-96f934d9f79a" />
-# HeliosForge
 
 **Forge d’Hélios** — Passer l’humanité au **niveau 2 de l’échelle de Kardashev** en exploitant directement l’énergie et la matière du Soleil.
 
