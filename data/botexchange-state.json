@@ -1,0 +1,131 @@
+{
+  "schema-version": "1.0",
+  "project-name": "HeliosForge",
+  "current-phase": "Phase 0 - Bootstrap HeliosForge",
+  "phase-status": "in_progress",
+  "phase-start-date": "2026-06-10",
+  "mission": "Move humanity to Kardashev Level 2 by harnessing the Sun directly — hybrid Dyson swarm, Star Lifting, autonomous Dark Factory",
+  "kardashev-target": 2.0,
+  "kardashev-current": 0.73,
+
+  "agents": {
+    "StellarCEO": {
+      "role": "Chief Executive Officer",
+      "status": "active",
+      "soul-file": "agents/core/StellarCEO-SOUL.md"
+    },
+    "StellarEngineer": {
+      "role": "Founding Engineer",
+      "status": "active",
+      "soul-file": "agents/core/StellarEngineer-SOUL.md"
+    },
+    "StellarArchitect": {
+      "role": "Chief Systems Architect",
+      "status": "defined",
+      "soul-file": "agents/core/StellarArchitect-IDENTITY.md"
+    },
+    "PlasmaEngineer": {
+      "role": "Chief Plasma & MHD Engineer",
+      "status": "defined",
+      "soul-file": "agents/core/PlasmaEngineer-SOUL.md"
+    },
+    "LiftingSpecialist": {
+      "role": "Chief Star Lifting Engineer",
+      "status": "defined",
+      "soul-file": "agents/core/LiftingSpecialist-SOUL.md"
+    }
+  },
+
+  "phase-gates": {
+    "Phase 0": {
+      "status": "in_progress",
+      "deliverables": [
+        "repo-structure",
+        "agent-souls",
+        "botexchange-seeded",
+        "blender-mcp-attempted",
+        "validation-script",
+        "graphene-materials-doc",
+        "docs-roadmap-flux-starlifting"
+      ],
+      "blockers": ["blender-mcp-not-detected-in-runtime"]
+    },
+    "Phase 1": {
+      "status": "not-started",
+      "label": "Simulation & Hi-Fi Modeling",
+      "dependencies": ["Phase 0 complete", "MiroFish integration", "Blender MCP configured"]
+    },
+    "Phase 2": {
+      "status": "not-started",
+      "label": "Prototype Hardware"
+    },
+    "Phase 3": {
+      "status": "not-started",
+      "label": "Autonomous Factory (Dark Factory V1)"
+    },
+    "Phase 4": {
+      "status": "not-started",
+      "label": "Stellar Scale"
+    }
+  },
+
+  "architecture": {
+    "dyson-swarm": {
+      "type": "hybrid",
+      "sub-types": ["photovoltaic", "plasma-magnetic"],
+      "target-orbit-au": [0.3, 0.5, 0.8, 1.0],
+      "element-area-m2": 100,
+      "element-pv-efficiency-target": 0.45,
+      "element-count-target": "1e12"
+    },
+    "star-lifting": {
+      "method": "magnetic-polar-funnel",
+      "target-mass-flow-kg-s": 1e10,
+      "natural-solar-wind-kg-s": 1.5e9
+    },
+    "dark-factory": {
+      "replication-ratio-target": 1.1,
+      "inference-backend": "ollama-qwen",
+      "cloud-dependency": false
+    }
+  },
+
+  "materials": {
+    "primary-structural": "graphene-composite",
+    "graphene-source": "Madagascar-Tamatave",
+    "high-temp-structural": "tungsten-rhenium-W25Re",
+    "mirror-concentrator": "aluminum-on-polyimide"
+  },
+
+  "tools": {
+    "3d-design": {
+      "name": "Blender MCP",
+      "status": "not-detected-in-runtime",
+      "blocker": true,
+      "unblock-owner": "StellarCEO",
+      "unblock-action": "Configure Blender MCP server in Paperclip company MCP settings"
+    },
+    "simulation": {
+      "name": "MiroFish",
+      "status": "planned-phase-1",
+      "integration-path": "simulations/"
+    },
+    "inference": {
+      "name": "Ollama/Qwen",
+      "status": "available",
+      "principle": "local-first"
+    }
+  },
+
+  "energy-targets": {
+    "phase-0": "0 W (design only)",
+    "phase-1": "0 W (simulation only)",
+    "phase-2": "~1 kW (bench prototype)",
+    "phase-3": "~10^18 W (1000 orbital elements)",
+    "phase-4": "3.828e26 W (full K2)"
+  },
+
+  "last-updated": "2026-06-10T00:00:00Z",
+  "updated-by": "StellarEngineer",
+  "update-reason": "Phase 0 Bootstrap — initial seed"
+}
