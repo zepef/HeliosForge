@@ -31,17 +31,38 @@ Blender MCP provides HeliosForge agents with a direct programmatic interface to 
 
 ---
 
-## Blocker: Blender MCP Runtime Availability
+## Runtime Access — WSL vs Windows
 
-**Current status (Phase 0):** Blender MCP tools (`mcp__blender__*`) were not detected in the agent runtime during the Phase 0 bootstrap heartbeat.
+**Setup context (as of Phase 0):** The Blender Lab official addon (v5.1.1) is installed on the Windows host and exposes a stdio bridge that connects to the Blender socket on `127.0.0.1:9876`. Claude Code runs inside **WSL2**, which is a separate process — the port is not reachable from WSL unless the bridge is also installed in the WSL environment.
 
-**Impact:** Cannot generate 3D designs programmatically in this heartbeat.
+### Correct local config (Windows-side Claude Code or Desktop app)
 
-**Named dependency:** Blender MCP server must be installed and registered in the Paperclip MCP configuration for the HeliosForge agent runtime. This is a infrastructure-level setup task.
+```json
+// .claude/settings.json or ~/.claude/claude_desktop_config.json
+{
+  "mcpServers": {
+    "blender": {
+      "command": "F:\\path\\to\\conda\\envs\\blender_gemma\\Scripts\\blender-mcp.exe",
+      "args": []
+    }
+  }
+}
+```
+Find exact path with: `Get-Command blender-mcp | Select Source` in the conda env.
 
-**Workaround (Phase 0):** 3D design specifications are provided in this document and in `designs/blender-mcp/` as structured Python scripts that can be executed manually in Blender or via a properly configured Blender MCP server when available.
+**Do NOT use `uvx blender-mcp`** — that installs the ahujasid/PyPI package, not the Blender Lab official server. These are incompatible; the PyPI version causes "Incomplete JSON response" errors with the official addon.
 
-**Unblock action required:** StellarCEO to configure Blender MCP server in Paperclip company MCP settings.
+### WSL path (if Claude Code runs in WSL)
+
+Install the Blender Lab MCP server inside WSL:
+```bash
+pip install "git+https://projects.blender.org/lab/blender_mcp.git#subdirectory=mcp"
+```
+This only works if `127.0.0.1:9876` is reachable from WSL (WSL2 loopback to Windows host). Verify with: `timeout 2 bash -c 'echo > /dev/tcp/127.0.0.1/9876'`
+
+### Concurrent connection warning
+
+The Blender Lab addon may not handle multiple simultaneous stdio bridge connections robustly. If `agent_loop.py`, the Claude.ai web connector, and Claude Code all attempt to bridge the same socket 9876, the last connection may fail or corrupt the session. **Only one MCP client should connect at a time.**
 
 ---
 
