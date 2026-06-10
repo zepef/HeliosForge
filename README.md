@@ -1,3 +1,15 @@
+<div align="center"><img width="640" height="360" alt="HeliosForge-Logo" src="https://github.com/user-attachments/assets/480d9db4-5d30-4bf8-8454-96f934d9f79a" /></div>
+
+**Forge d'Hélios** — Passer l'humanité au **niveau 2 de l'échelle de Kardashev** en exploitant directement l'énergie et la matière du Soleil.
+
+HeliosForge est un projet d'**ingénierie stellaire** dont l'objectif ultime est de transformer notre civilisation d'un stade planétaire (~0,7) en une **véritable civilisation stellaire de niveau 2 Kardashev**.
+
+Au lieu de capter seulement une infime fraction de photons solaires sur Terre, nous construisons une **Dark Factory stellaire auto-réplicante** composée d'un **essaim Dyson hybride** (capture photonique full-spectrum + collecteurs plasma/vent solaire + systèmes magnétiques) et de technologies de **Star Lifting** (extraction contrôlée d'hydrogène et d'hélium des couches externes du Soleil).
+
+Nous forgeons littéralement l'avenir de l'humanité dans la forge d'Hélios.
+
+---
+
 # HeliosForge
 
 > *Forging civilization's future at the stellar scale — one photon, one plasma stream, one self-replicating factory at a time.*
